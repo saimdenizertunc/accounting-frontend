@@ -4,6 +4,7 @@ import TransactionForm from './components/transactions/TransactionForm';
 import TransactionList from './components/transactions/TransactionList';
 import AccountList from './components/accounts/AccountList';
 import AccountForm from './components/accounts/AccountForm';
+import ReportsDashboard from './components/reports/ReportsDashboard';
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
       <main className="pt-16 pl-64">
         <div className="p-6">
           <div className="grid grid-cols-1 gap-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Financial Overview</h2>
+              <ReportsDashboard />
+            </div>
             <div>
               <h2 className="text-xl font-semibold mb-4">Accounts Overview</h2>
               <AccountList />
