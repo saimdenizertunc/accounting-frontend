@@ -1,5 +1,7 @@
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
+import TransactionForm from './components/transactions/TransactionForm';
+import TransactionList from './components/transactions/TransactionList';
 
 function App() {
   return (
@@ -8,8 +10,18 @@ function App() {
       <Sidebar />
       <main className="pt-16 pl-64">
         <div className="p-6">
-          {/* Main content will go here */}
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">New Transaction</h2>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <TransactionForm />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Transaction History</h2>
+              <TransactionList />
+            </div>
+          </div>
         </div>
       </main>
     </div>
