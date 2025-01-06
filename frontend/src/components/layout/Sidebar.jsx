@@ -1,4 +1,5 @@
-import { Home, Wallet, BarChart2, Settings } from 'lucide-react';
+import { Home, Wallet, BarChart2, Settings, CreditCard } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
   return (
@@ -11,10 +12,10 @@ function Sidebar() {
 
       {/* Navigation Menu */}
       <nav className="space-y-1">
-        <NavItem icon={<Home />} label="Dashboard" active />
-        <NavItem icon={<Wallet />} label="Accounts" />
-        <NavItem icon={<BarChart2 />} label="Reports" />
-        <NavItem icon={<Settings />} label="Settings" />
+        <NavItem to="/" icon={<Home />} label="Dashboard" />
+        <NavItem to="/accounts" icon={<Wallet />} label="Accounts" />
+        <NavItem to="/transactions" icon={<CreditCard />} label="Transactions" />
+        <NavItem to="/reports" icon={<BarChart2 />} label="Reports" />
       </nav>
 
       {/* Account List */}
@@ -30,19 +31,21 @@ function Sidebar() {
   );
 }
 
-function NavItem({ icon, label, active }) {
-  return (
-    <a
-      href="#"
-      className={`flex items-center space-x-3 px-3 py-2 rounded-lg ${
-        active ? 'bg-[#274c67] text-white' : 'text-gray-600 hover:bg-gray-100'
-      }`}
-    >
-      {icon}
-      <span>{label}</span>
-    </a>
-  );
-}
+function NavItem({ icon, label, to }) {
+    return (
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          `flex items-center space-x-3 px-3 py-2 rounded-lg ${
+            isActive ? 'bg-[#274c67] text-white' : 'text-gray-600 hover:bg-gray-100'
+          }`
+        }
+      >
+        {icon}
+        <span>{label}</span>
+      </NavLink>
+    );
+  }
 
 function AccountGroup({ title, balance }) {
   return (
