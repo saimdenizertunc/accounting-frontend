@@ -1,6 +1,13 @@
 import { Search, Plus, Globe, User } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
 
 function Header() {
+    const { i18n } = useTranslation();
+
+const changeLanguage = (lng) => {
+  i18n.changeLanguage(lng);
+};
   return (
     <header className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
       <div className="px-4 h-16 flex items-center justify-between">
@@ -29,17 +36,35 @@ function Header() {
           </button>
           
           <div className="flex items-center gap-2 ml-2">
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <Globe className="h-5 w-5 text-gray-600" />
-            </button>
+          <div className="relative group">
+  <button className="p-2 hover:bg-gray-100 rounded-full">
+    <Globe className="h-5 w-5 text-gray-600" />
+  </button>
+  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
+    <button
+      onClick={() => changeLanguage('en')}
+      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+    >
+      English
+    </button>
+    <button
+      onClick={() => changeLanguage('es')}
+      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+    >
+      Español
+    </button>
+  </div>
+</div>
             <button className="p-2 hover:bg-gray-100 rounded-full">
               <User className="h-5 w-5 text-gray-600" />
             </button>
+         
           </div>
         </div>
       </div>
     </header>
   );
+
 }
 
 export default Header;
